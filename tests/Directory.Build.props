@@ -1,0 +1,24 @@
+﻿<Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
+
+	<PropertyGroup>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="TUnit"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="TUnit"/>
+		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage"/>
+	</ItemGroup>
+
+</Project>

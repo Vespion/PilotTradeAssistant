@@ -1,0 +1,36 @@
+﻿<Project>
+
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsDeterministic>true</IsDeterministic>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<NeutralLanguage>en-GB</NeutralLanguage>
+		<Product>Pilot Trade Assistant</Product>
+		<Company>Vespion Softworks</Company>
+
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+		<!-- Required for Hot Reload (See https://github.com/dotnet/sdk/issues/36666) -->
+		<IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)'=='Debug'">false</IncludeSourceRevisionInInformationalVersion>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<_NS>PTA.$(MSBuildProjectName)</_NS>
+
+		<RootNamespace>$(_NS)</RootNamespace>
+		<PackageId>$(_NS)</PackageId>
+		<AssemblyName>$(RootNamespace)</AssemblyName>
+
+		<VersionPrefix Condition="'$(VersionPrefix)' == ''">0.0.0</VersionPrefix>
+		<VersionSuffix Condition="'$(VersionSuffix)' == ''">dev</VersionSuffix>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageJson Include="package.json"/>
+	</ItemGroup>
+</Project>

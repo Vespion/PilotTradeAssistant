@@ -1,0 +1,18 @@
+﻿<Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<IsPackable>false</IsPackable>
+		<DotNetVersion>netstandard2.0</DotNetVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<_NS>PTA.Build.$(MSBuildProjectName)</_NS>
+
+		<RootNamespace>$(_NS)</RootNamespace>
+		<PackageId>$(_NS)</PackageId>
+		<AssemblyName>$(RootNamespace)</AssemblyName>
+	</PropertyGroup>
+
+</Project>

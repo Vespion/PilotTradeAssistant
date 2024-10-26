@@ -1,0 +1,26 @@
+﻿<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <DotNetVersion>net8.0</DotNetVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EfCoreVersion>8.0.10</EfCoreVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <GlobalPackageReference Include="JsonPeek" Version="1.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EfCoreVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="$(EfCoreVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite" Version="$(EfCoreVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="$(EfCoreVersion)" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.10" />
+    <PackageVersion Include="Strongly" Version="1.5.1" />
+    <PackageVersion Include="Strongly.EFCore" Version="1.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="TUnit" Version="0.2.15" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.6" />
+  </ItemGroup>
+</Project>

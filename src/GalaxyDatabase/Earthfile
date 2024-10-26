@@ -1,0 +1,21 @@
+VERSION 0.8
+IMPORT ../../ AS root
+
+restore:
+	FROM root+dotnet-sdk
+	WORKDIR /work
+	COPY root+get-msbuild-chain-files/* .
+	COPY . .
+	RUN dotnet restore
+
+# add-migration will create a new migration and script for the database schema
+add-migration:
+	FROM +restore
+	ARG --required migration_name
+	RUN dotnet ef migrations add $migration_name -o DataLayer/Migrations
+#	RUN id=$(dotnet ef migrations list --json --no-connect --prefix-output | sed '/info:/d;/warn:/d;s/data:    //' | jq '.[] | select(.name == env.migration_name) | .id') && dotnet ef migrations script -o DataLayer/Scripts/$id.sql
+#	RUN dotnet ef dbcontext optimize --nativeaot -o DataLayer/Compiled
+#	SAVE ARTIFACT DataLayer/Scripts/* AS LOCAL DataLayer/Scripts/
+	SAVE ARTIFACT DataLayer/Migrations/* AS LOCAL DataLayer/Migrations/
+#	SAVE ARTIFACT DataLayer/Compiled/* AS LOCAL DataLayer/Compiled/
+

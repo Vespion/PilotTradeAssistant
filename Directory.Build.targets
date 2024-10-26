@@ -1,0 +1,15 @@
+﻿<Project>
+	<Target Name="SetAssemblyVersionFromSource" BeforeTargets="BeforeBuild" Condition="Exists(@(PackageJson))">
+		<JsonPeek Query="$.version" ContentPath="@(PackageJson)">
+			<Output TaskParameter="Result" ItemName="CanonicalVersion"/>
+		</JsonPeek>
+
+		<PropertyGroup>
+			<Version>@(CanonicalVersion)</Version>
+		</PropertyGroup>
+	</Target>
+
+	<PropertyGroup Condition="'$(GenerateDocumentationFile)' == 'true'">
+		<DocumentationFile>$(OutDir)/$(AssemblyName).doc.xml</DocumentationFile>
+	</PropertyGroup>
+</Project>
